@@ -41,7 +41,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push version
-        id: docker_build
+        id: docker_build_version
         uses: docker/build-push-action@v2
         with:
           context: .
@@ -51,7 +51,7 @@ jobs:
             "github_token=${{ secrets.GITHUB_TOKEN }}"
 
       - name: Build and push latest
-        id: docker_build
+        id: docker_build_latest
         uses: docker/build-push-action@v2
         if: ${{ env.GITHUB_REF_NAME == 'master' }}
         with:
