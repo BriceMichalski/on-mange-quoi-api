@@ -43,7 +43,6 @@ jobs:
       - name: Build and push version
         id: docker_build
         uses: docker/build-push-action@v2
-        if: ${{ env.GITHUB_REF_NAME == master }}
         with:
           context: .
           push: true
