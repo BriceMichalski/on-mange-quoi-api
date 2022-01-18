@@ -22,7 +22,7 @@ jobs:
         uses: mavrosxristoforos/get-xml-info@1.0
         with:
           xml-file: 'pom.xml'
-          xpath: '/project/version/text()'
+          xpath: '/project/version'
 
       - name: Debug msg
         run: echo "Let's build ${{ steps.pomversion.outputs.info }} version"
