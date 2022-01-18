@@ -1,6 +1,6 @@
 ---
 server:
-  port: 8081
+  port: ${PORT}
 
 management:
   endpoints:
