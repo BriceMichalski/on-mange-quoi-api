@@ -23,8 +23,7 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Set TAG to latest
-        if: startsWith(github.ref, 'refs/heads/develop')
+      - name: Set VERSION with pom.xml project version
         run: |
           version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout) && echo "::set-env name=VERSION::$version"
         env:
