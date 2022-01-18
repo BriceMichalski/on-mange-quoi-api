@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - develop
+      - feat/ci
 
 jobs:
   build-release:
