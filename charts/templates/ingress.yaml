@@ -20,10 +20,10 @@ metadata:
     {{- include "charts.labels" . | nindent 4 }}
   annotations:  
   {{- if .Values.externalDnsTargetOverride }}
-  external-dns.alpha.kubernetes.io/target: {{ .Values.externalDnsTargetOverride }}
+    external-dns.alpha.kubernetes.io/target: {{ .Values.externalDnsTargetOverride }}
   {{- end }}
   {{- if .Values.traefikMiddleware }}
-  traefik.ingress.kubernetes.io/router.middlewares: {{ .Values.traefikMiddleware }}
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Values.traefikMiddleware }}
   {{- end }}
   {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
