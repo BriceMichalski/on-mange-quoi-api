@@ -4,8 +4,8 @@
 
 replicaCount: 1
 
-publicIp: ""
-middleware: "kube-operable-cloudflare-ip-whitelist@kubernetescrd"
+externalDnsTargetOverride: ""
+traefikMiddleware: "kube-operable-cloudflare-ip-whitelist@kubernetescrd"
 
 image:
   repository: ghcr.io/bricemichalski/omq:version
@@ -47,11 +47,9 @@ ingress:
   enabled: true
   className: ""
   annotations:
-      external-dns.alpha.kubernetes.io/target: {{ .Values.publicIp }}
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.middlewares: {{ .Values.middleware }}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
