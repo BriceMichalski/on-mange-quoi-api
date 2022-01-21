@@ -14,7 +14,7 @@ jobs:
     steps:
 
       - name: Debug msg
-        run: echo "${{ env.GITHUB_REF_NAME }}"
+        run: echo " $GITHUB_REF  -- ${{ GITHUB_REF_NAME }}"
 
       - name: Debug msg
         run: echo "${{ env }}"
