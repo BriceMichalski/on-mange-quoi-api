@@ -17,7 +17,7 @@ jobs:
         run: echo " $GITHUB_REF#refs/heads/ "
 
       - name: Debug msg
-        run: echo "${{ env }}"
+        run: echo "$BRANCH_NAME"
 
 
       - uses: actions/checkout@v2
