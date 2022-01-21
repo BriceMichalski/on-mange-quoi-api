@@ -4,11 +4,11 @@
 
 replicaCount: 1
 
-externalDnsTargetOverride: {}
+externalDnsTargetOverride: 
 traefikMiddleware: "kube-operable-cloudflare-ip-whitelist@kubernetescrd"
 
 image:
-  repository: ghcr.io/bricemichalski/omq:version
+  repository: ghcr.io/bricemichalski/omq
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.0.1-snapshot"
