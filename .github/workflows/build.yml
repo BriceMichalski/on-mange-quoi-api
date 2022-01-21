@@ -14,7 +14,7 @@ jobs:
     steps:
 
       - name: Debug msg
-        run: echo " $GITHUB_REF#refs/heads/ "
+        run: env
 
       - name: Debug msg
         run: echo "$BRANCH_NAME"
