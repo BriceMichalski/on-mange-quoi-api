@@ -14,10 +14,7 @@ jobs:
     steps:
 
       - name: Debug msg
-        run: env
-
-      - name: Debug msg
-        run: echo "$BRANCH_NAME"
+        run: echo "$GITHUB_REF_NAME"
 
 
       - uses: actions/checkout@v2
