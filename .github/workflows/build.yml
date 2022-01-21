@@ -13,10 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Debug msg
-        run: echo "$GITHUB_REF_NAME"
-
-
       - uses: actions/checkout@v2
 
       - name: Set up QEMU
@@ -55,9 +51,20 @@ jobs:
             "github_token=${{ secrets.GITHUB_TOKEN }}"
 
       - name: Build and push latest
+        id: docker_build_preview
+        uses: docker/build-push-action@v2
+        if: $GITHUB_REF_NAME == 'develop'
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/bricemichalski/omq:preview
+          secrets: |
+            "github_token=${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Build and push latest
         id: docker_build_latest
         uses: docker/build-push-action@v2
-        if: ${{ env.GITHUB_REF_NAME == 'master' }}
+        if: $GITHUB_REF_NAME == 'master'
         with:
           context: .
           push: true
