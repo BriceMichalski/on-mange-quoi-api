@@ -9,7 +9,7 @@ traefikMiddleware: "kube-operable-cloudflare-ip-whitelist@kubernetescrd"
 
 image:
   repository: ghcr.io/bricemichalski/omq
-  pullPolicy: always
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
