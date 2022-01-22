@@ -39,13 +39,16 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+container:
+  port: 80
+
 service:
   type: ClusterIP
   port: 80
 
 ingress:
   enabled: true
-  className: ""
+  className: "traefik"
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik
