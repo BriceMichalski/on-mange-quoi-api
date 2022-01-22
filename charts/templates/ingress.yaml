@@ -16,8 +16,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
-  labels:
-    {{- include "charts.labels" . | nindent 4 }}
   annotations:  
   {{- if .Values.externalDnsTargetOverride }}
     external-dns.alpha.kubernetes.io/target: {{ .Values.externalDnsTargetOverride }}
