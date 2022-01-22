@@ -34,7 +34,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: PORT
-              value: {{ .Values.container.port }}
+              value: "{{ .Values.container.port }}"
           ports:
             - name: http
               containerPort: {{ .Values.container.port }}
