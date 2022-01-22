@@ -44,7 +44,7 @@ ingress:
   extarnalDnsTarget: 
   className: "traefik"
   annotations: 
-    traefik.ingress.kubernetes.io/router.middlewares:
+    traefik.ingress.kubernetes.io/router.middlewares: kube-operable-cloudflare-ip-whitelist@kubernetescrd
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
