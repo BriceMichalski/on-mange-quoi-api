@@ -41,10 +41,10 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
+  dnstarget: "0.0.0.0"
   annotations:
-    external-dns.alpha.kubernetes.io/target: ""
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
@@ -52,7 +52,7 @@ ingress:
     - host: poc-helm.mbcaas.com
       paths:
         - path: /
-          pathType: poc-helm.mbcaas.com
+          pathType: Prefix
   tls:
    - secretName: poc-helm.mbcaas.com
      hosts:
