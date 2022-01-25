@@ -18,11 +18,8 @@ metadata:
   name: {{ $fullName }}
   labels:
     {{- include "charts.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}  
   annotations:
-  {{- if .Values.ingress.extarnalDnsTarget }}
-    external-dns.alpha.kubernetes.io/target: {{ .Values.ingress.extarnalDnsTarget }}
-  {{- end }}
-  {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
