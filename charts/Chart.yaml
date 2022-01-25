@@ -1,6 +1,6 @@
 apiVersion: v2
 name: omqapi
-description: A Helm chart for Kubernetes
+description: on mange quoi backend api
 
 # A chart can be either an 'application' or a 'library' chart.
 #
