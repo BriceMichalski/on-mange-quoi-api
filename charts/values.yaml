@@ -41,22 +41,14 @@ service:
   port: 80
 
 ingress:
-  enabled: true
-  className: ""
-  dnstarget: "0.0.0.0"
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+  enabled: false
+  className: ''
+  annotations: {}
   hosts:
-    - host: api-test.on-mange-quoi.com
+    - host: chart-example.local
       paths:
         - path: /
-          pathType: Prefix
-  tls:
-   - secretName: api-test.on-mange-quoi.com-tls
-     hosts:
-       - api-test.on-mange-quoi.com
+          pathType: ImplementationSpecific
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
