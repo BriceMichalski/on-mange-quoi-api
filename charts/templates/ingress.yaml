@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "charts.fullname" . -}}
+{{- $fullName := include "poc.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
@@ -17,12 +17,10 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "charts.labels" . | nindent 4 }}
+    {{- include "poc.labels" . | nindent 4 }}
   annotations:
-  {{- if .Values.ingress.extarnalDnsTarget }}
-    external-dns.alpha.kubernetes.io/target: {{ .Values.ingress.extarnalDnsTarget }}
-  {{- end }}
-  {{- with .Values.ingress.annotations }}
+    external-dns.alpha.kubernetes.io/target: "{{ .Values.ingress.dnstarget }}"
+  {{- with .Values.ingress.annotations }}  
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:

@@ -1,4 +1,4 @@
-# Default values for charts.
+# Default values for poc.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -7,7 +7,8 @@ replicaCount: 1
 image:
   repository: ghcr.io/bricemichalski/omq
   pullPolicy: Always
-  tag: "lastest"
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "preview"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -41,22 +42,26 @@ service:
 
 ingress:
   enabled: true
-  extarnalDnsTarget: 
-  className: "traefik"
-  annotations: 
-    traefik.ingress.kubernetes.io/router.middlewares: kube-operable-cloudflare-ip-whitelist@kubernetescrd
+  className: ""
+  dnstarget: "0.0.0.0"
+  annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
   hosts:
-    - host: api-dev.on-mange-quoi.com
+    - host: poc-helm.mbcaas.com
       paths:
         - path: /
           pathType: Prefix
-  tls: 
-   - secretName: api-dev.on-mange-quoi.com
+    - host: api-test.on-mange-quoi.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+   - secretName: poc-helm.mbcaas.com
      hosts:
-       - api-dev.on-mange-quoi.com
+       - poc-helm.mbcaas.com
+       - api-test.on-mange-quoi.com
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
